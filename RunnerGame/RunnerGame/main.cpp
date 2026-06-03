@@ -5,7 +5,6 @@
 #include <map>
 
 #include "Helper.hpp"
-#include "GameObject.hpp"
 
 int main()
 {
@@ -14,8 +13,7 @@ int main()
 	std::vector<sf::Sprite*> sprites;
 	std::map<std::string, sf::Texture*> textures;
 
-	sf::Sprite* tempSprite = loadSprite("Assets/STEVE.png", "STEVE", sprites, textures);
-	GameObject Steve(tempSprite);
+	sf::Sprite Steve = *loadSprite("Assets/STEVE.png", "STEVE", sprites, textures);
 
 	while (window.isOpen()) {
 		while (const std::optional event = window.pollEvent()) {
