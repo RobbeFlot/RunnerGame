@@ -20,6 +20,10 @@ int main()
 	sf::Sprite* Bg1 = loadSprite("Assets/BG-1B.png", "Bg1", sprites, textures);
 	sf::Sprite* Bg2 = loadSprite("Assets/BG-2B.png", "Bg2", sprites, textures);
 	Bg2->setPosition({ 1000, 0 });
+	sf::Sprite* G1 = loadSprite("Assets/Ground.png", "G1", sprites, textures);
+	G1->setPosition({ 0, 440 });
+	sf::Sprite* G2 = loadSprite("Assets/Ground.png", "G1", sprites, textures);
+	G2->setPosition({ 1000, 440 });
 	sf::Sprite* Steve = loadSprite("Assets/STEVE.png", "STEVE", sprites, textures);
 
 	while (window.isOpen()) {
@@ -38,6 +42,16 @@ int main()
 			}
 			if (Bg2->getPosition().x <= -1000) {
 				Bg2->setPosition({ 1000, 0 });
+			}
+
+			//scrolling ground
+			G1->move({ -100.f * deltaTime.asSeconds(), 0.f });
+			G2->move({ -100.f * deltaTime.asSeconds(), 0.f });
+			if (G1->getPosition().x <= -1000) {
+				G1->setPosition({ 1000, 440 });
+			}
+			if (G2->getPosition().x <= -1000) {
+				G2->setPosition({ 1000, 440 });
 			}
 		}
 
